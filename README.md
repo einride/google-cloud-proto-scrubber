@@ -21,5 +21,5 @@ API Gateway][google-cloud-api-gateway].
 # Usage
 
 ```bash
-$ go run go.einride.tech/api-descriptor-scrubber -f descriptor.bin
+$ go run go.einride.tech/api-descriptor-scrubber -f descriptor.pb
 ```
