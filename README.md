@@ -1,17 +1,17 @@
-# API Descriptor Scrubber
+# Google Cloud Proto Scrubber
 
 [![PkgGoDev][pkg-badge]][pkg]
 [![GoReportCard][report-badge]][report]
 [![Codecov][codecov-badge]][codecov]
 
-[pkg-badge]: https://pkg.go.dev/badge/go.einride.tech/api-descriptor-scrubber
-[pkg]: https://pkg.go.dev/go.einride.tech/api-descriptor-scrubber
-[report-badge]: https://goreportcard.com/badge/go.einride.tech/api-descriptor-scrubber
-[report]: https://goreportcard.com/report/go.einride.tech/api-descriptor-scrubber
-[codecov-badge]: https://codecov.io/gh/einride/api-descriptor-scrubber-go/branch/master/graph/badge.svg
-[codecov]: https://codecov.io/gh/einride/api-descriptor-scrubber-go
+[pkg-badge]: https://pkg.go.dev/badge/go.einride.tech/google-cloud-proto-scrubber
+[pkg]: https://pkg.go.dev/go.einride.tech/google-cloud-proto-scrubber
+[report-badge]: https://goreportcard.com/badge/go.einride.tech/google-cloud-proto-scrubber
+[report]: https://goreportcard.com/report/go.einride.tech/google-cloud-proto-scrubber
+[codecov-badge]: https://codecov.io/gh/einride/google-cloud-proto-scrubber-go/branch/master/graph/badge.svg
+[codecov]: https://codecov.io/gh/einride/google-cloud-proto-scrubber
 
-Scrub gRPC API descriptors of unsupported annotations before uploading
+Scrub protobuf/gRPC API descriptors of unsupported annotations before uploading
 them to [Google Cloud Endpoints][google-cloud-endpoints] and [Google Cloud
 API Gateway][google-cloud-api-gateway].
 
@@ -21,5 +21,5 @@ API Gateway][google-cloud-api-gateway].
 # Usage
 
 ```bash
-$ go run go.einride.tech/api-descriptor-scrubber -f descriptor.pb
+$ go run go.einride.tech/google-cloud-proto-scrubber -f descriptor.pb
 ```

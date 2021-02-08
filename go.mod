@@ -1,4 +1,4 @@
-module go.einride.tech/api-descriptor-scrubber
+module go.einride.tech/google-cloud-proto-scrubber
 
 go 1.15
 
