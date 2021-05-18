@@ -35,6 +35,7 @@ func main() {
 			scrubResource(message)
 			scrubResourceReferences(message)
 			scrubFieldBehaviors(message)
+			scrubMessageFields(message)
 		}
 		for _, service := range file.GetService() {
 			scrubServiceOptions(service)
@@ -83,6 +84,20 @@ func scrubResource(message *descriptorpb.DescriptorProto) {
 func scrubServiceOptions(service *descriptorpb.ServiceDescriptorProto) {
 	if service.GetOptions() != nil {
 		proto.ClearExtension(service.GetOptions(), annotations.E_DefaultHost)
+	}
+}
+
+func scrubMessageFields(message *descriptorpb.DescriptorProto) {
+	n := 0
+	for _, field := range message.Field {
+		if field.GetTypeName() != ".google.api.ResourceDescriptor" {
+			message.Field[n] = field
+			n++
+		}
+	}
+	message.Field = message.Field[:n]
+	for _, nestedMessage := range message.NestedType {
+		scrubMessageFields(nestedMessage)
 	}
 }
 
