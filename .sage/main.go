@@ -9,6 +9,7 @@ import (
 	"go.einride.tech/sage/tools/sggo"
 	"go.einride.tech/sage/tools/sggolangcilint"
 	"go.einride.tech/sage/tools/sggoreview"
+	"go.einride.tech/sage/tools/sggovulncheck"
 	"go.einride.tech/sage/tools/sgmarkdownfmt"
 	"go.einride.tech/sage/tools/sgyamlfmt"
 )
@@ -23,14 +24,16 @@ func main() {
 }
 
 func All(ctx context.Context) error {
-	sg.Deps(ctx, ConvcoCheck, GolangciLint, GoReview, GoTest, FormatMarkdown, FormatYAML)
-	sg.SerialDeps(ctx, GoModTidy, GitVerifyNoDiff)
+	sg.Deps(ctx, ConvcoCheck, FormatMarkdown, FormatYAML)
+	sg.Deps(ctx, GoLint, GoReview, GoTest, GoVulnCheck)
+	sg.Deps(ctx, GoModTidy)
+	sg.Deps(ctx, GitVerifyNoDiff)
 	return nil
 }
 
 func FormatYAML(ctx context.Context) error {
 	sg.Logger(ctx).Println("formatting YAML files...")
-	return sgyamlfmt.Command(ctx, "-d", sg.FromGitRoot(), "-r").Run()
+	return sgyamlfmt.Run(ctx)
 }
 
 func GoModTidy(ctx context.Context) error {
@@ -45,12 +48,17 @@ func GoTest(ctx context.Context) error {
 
 func GoReview(ctx context.Context) error {
 	sg.Logger(ctx).Println("reviewing Go files...")
-	return sggoreview.Command(ctx, "-c", "1", "./...").Run()
+	return sggoreview.Run(ctx)
 }
 
-func GolangciLint(ctx context.Context) error {
+func GoLint(ctx context.Context) error {
 	sg.Logger(ctx).Println("linting Go files...")
 	return sggolangcilint.Run(ctx)
+}
+
+func GoVulnCheck(ctx context.Context) error {
+	sg.Logger(ctx).Println("checking Go files for vulnerabilities...")
+	return sggovulncheck.RunAll(ctx)
 }
 
 func FormatMarkdown(ctx context.Context) error {
