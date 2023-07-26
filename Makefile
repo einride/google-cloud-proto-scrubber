@@ -71,6 +71,13 @@ go-lint: $(sagefile)
 go-mod-tidy: $(sagefile)
 	@$(sagefile) GoModTidy
 
+.PHONY: go-releaser
+go-releaser: $(sagefile)
+ifndef snapshot
+	 $(error missing argument snapshot="...")
+endif
+	@$(sagefile) GoReleaser "$(snapshot)"
+
 .PHONY: go-review
 go-review: $(sagefile)
 	@$(sagefile) GoReview
@@ -82,3 +89,13 @@ go-test: $(sagefile)
 .PHONY: go-vuln-check
 go-vuln-check: $(sagefile)
 	@$(sagefile) GoVulnCheck
+
+.PHONY: semantic-release
+semantic-release: $(sagefile)
+ifndef repo
+	 $(error missing argument repo="...")
+endif
+ifndef dry
+	 $(error missing argument dry="...")
+endif
+	@$(sagefile) SemanticRelease "$(repo)" "$(dry)"
