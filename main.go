@@ -6,8 +6,8 @@ import (
 	"log"
 	"os"
 
+	"cloud.google.com/go/longrunning/autogen/longrunningpb"
 	"google.golang.org/genproto/googleapis/api/annotations"
-	"google.golang.org/genproto/googleapis/longrunning"
 	"google.golang.org/protobuf/proto"
 	"google.golang.org/protobuf/types/descriptorpb"
 )
@@ -125,7 +125,7 @@ func scrubFieldBehaviors(message *descriptorpb.DescriptorProto) {
 
 func scrubLongRunningOperationInfo(method *descriptorpb.MethodDescriptorProto) {
 	if method.GetOptions() != nil {
-		proto.ClearExtension(method.GetOptions(), longrunning.E_OperationInfo)
+		proto.ClearExtension(method.GetOptions(), longrunningpb.E_OperationInfo)
 	}
 }
 
