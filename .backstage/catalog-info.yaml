@@ -1,0 +1,14 @@
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: google-cloud-proto-scrubber
+  description: |
+    Scrub protobuf/gRPC API descriptors of unsupported annotations before uploading them to Google Cloud Endpoints and Google Cloud API Gateway.
+  annotations:
+    github.com/project-slug: einride/google-cloud-proto-scrubber
+    github.com/team-slug: einride/team-cloud-control
+    backstage.io/source-location: url:https://github.com/einride/google-cloud-proto-scrubber/tree/master/
+spec:
+  type: library
+  lifecycle: production
+  owner: team-cloud-control
