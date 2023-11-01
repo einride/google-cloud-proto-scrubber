@@ -3,8 +3,8 @@ module go.einride.tech/google-cloud-proto-scrubber
 go 1.20
 
 require (
-	cloud.google.com/go/longrunning v0.5.1
-	google.golang.org/genproto/googleapis/api v0.0.0-20230706204954-ccb25ca9f130
+	cloud.google.com/go/longrunning v0.5.3
+	google.golang.org/genproto/googleapis/api v0.0.0-20230822172742-b8732ec3820d
 	google.golang.org/protobuf v1.31.0
 )
 
@@ -13,7 +13,7 @@ require (
 	golang.org/x/net v0.17.0 // indirect
 	golang.org/x/sys v0.13.0 // indirect
 	golang.org/x/text v0.13.0 // indirect
-	google.golang.org/genproto v0.0.0-20230725213213-b022f6e96895 // indirect
-	google.golang.org/genproto/googleapis/rpc v0.0.0-20230706204954-ccb25ca9f130 // indirect
-	google.golang.org/grpc v1.56.3 // indirect
+	google.golang.org/genproto v0.0.0-20230822172742-b8732ec3820d // indirect
+	google.golang.org/genproto/googleapis/rpc v0.0.0-20230822172742-b8732ec3820d // indirect
+	google.golang.org/grpc v1.59.0 // indirect
 )
