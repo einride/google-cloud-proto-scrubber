@@ -1,0 +1,10 @@
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: google-cloud-proto-scrubber
+  description: Scrub protobuf/gRPC API descriptors of unsupported annotations.
+spec:
+  type: library
+  lifecycle: production
+  owner: platform-engineering
+  system: backend-sdk
