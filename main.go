@@ -29,7 +29,7 @@ func main() {
 		log.Fatal(err)
 	}
 	for _, file := range fileDescriptorSet.GetFile() {
-		file.Dependency = scrubDependencies(file.Dependency)
+		file.Dependency = scrubDependencies(file.GetDependency())
 		scrubResourceDefinitions(file)
 		for _, message := range file.GetMessageType() {
 			scrubResource(message)
@@ -89,14 +89,14 @@ func scrubServiceOptions(service *descriptorpb.ServiceDescriptorProto) {
 
 func scrubMessageFields(message *descriptorpb.DescriptorProto) {
 	n := 0
-	for _, field := range message.Field {
+	for _, field := range message.GetField() {
 		if field.GetTypeName() != ".google.api.ResourceDescriptor" {
 			message.Field[n] = field
 			n++
 		}
 	}
-	message.Field = message.Field[:n]
-	for _, nestedMessage := range message.NestedType {
+	message.Field = message.GetField()[:n]
+	for _, nestedMessage := range message.GetNestedType() {
 		scrubMessageFields(nestedMessage)
 	}
 }
@@ -107,7 +107,7 @@ func scrubResourceReferences(message *descriptorpb.DescriptorProto) {
 			proto.ClearExtension(field.GetOptions(), annotations.E_ResourceReference)
 		}
 	}
-	for _, nestedMessage := range message.NestedType {
+	for _, nestedMessage := range message.GetNestedType() {
 		scrubResourceReferences(nestedMessage)
 	}
 }
@@ -118,7 +118,7 @@ func scrubFieldBehaviors(message *descriptorpb.DescriptorProto) {
 			proto.ClearExtension(field.GetOptions(), annotations.E_FieldBehavior)
 		}
 	}
-	for _, nestedMessage := range message.NestedType {
+	for _, nestedMessage := range message.GetNestedType() {
 		scrubFieldBehaviors(nestedMessage)
 	}
 }
