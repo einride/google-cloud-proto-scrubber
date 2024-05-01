@@ -5,7 +5,7 @@ go 1.20
 require (
 	cloud.google.com/go/longrunning v0.5.6
 	google.golang.org/genproto/googleapis/api v0.0.0-20240311132316-a219d84964c2
-	google.golang.org/protobuf v1.33.0
+	google.golang.org/protobuf v1.34.0
 )
 
 require (
