@@ -2,7 +2,6 @@ package main
 
 import (
 	"flag"
-	"io/ioutil"
 	"log"
 	"os"
 
@@ -20,7 +19,7 @@ func main() {
 		flag.Usage()
 		os.Exit(1)
 	}
-	input, err := ioutil.ReadFile(filename)
+	input, err := os.ReadFile(filename)
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -49,7 +48,7 @@ func main() {
 	if err != nil {
 		log.Fatal(err)
 	}
-	if err := ioutil.WriteFile(filename, output, 0o600); err != nil {
+	if err := os.WriteFile(filename, output, 0o600); err != nil {
 		log.Fatal(err)
 	}
 }
