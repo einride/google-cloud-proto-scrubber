@@ -1,8 +1,6 @@
 module go.einride.tech/google-cloud-proto-scrubber
 
-go 1.23.0
-
-toolchain go1.24.4
+go 1.23.12
 
 require (
 	cloud.google.com/go/longrunning v0.6.7
