@@ -3,7 +3,7 @@ module go.einride.tech/google-cloud-proto-scrubber
 go 1.26.10
 
 require (
-	cloud.google.com/go/longrunning v0.6.7
+	cloud.google.com/go/longrunning v1.3.0
 	google.golang.org/genproto/googleapis/api v0.0.0-20260817212433-ac3dfec99bb1
 	google.golang.org/protobuf v1.36.12
 )
